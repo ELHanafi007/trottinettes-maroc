@@ -1,0 +1,6 @@
+<svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Xiaomi Logo -->
+  <rect width="50" height="50" rx="10" fill="#FF6900"/>
+  <text x="25" y="34" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="24">MI</text>
+  <text x="75" y="35" fill="#ffffff" font-family="Arial, sans-serif" font-weight="bold" font-size="20">Xiaomi</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- BMW Logo Style -->
+  <circle cx="25" cy="25" r="22" fill="#ffffff" stroke="#0066B1" stroke-width="2"/>
+  <circle cx="25" cy="25" r="18" fill="#0066B1"/>
+  <path d="M 25 7 L 25 25 L 43 25" stroke="white" stroke-width="3" fill="none"/>
+  <text x="75" y="30" fill="#ffffff" font-family="Arial, sans-serif" font-weight="bold" font-size="18">BMW</text>
+  <text x="75" y="46" fill="#666666" font-family="Arial, sans-serif" font-size="9">i ELECTRIC</text>
+</svg>
