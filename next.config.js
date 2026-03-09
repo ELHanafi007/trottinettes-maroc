@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export', // Commented out for admin panel support (dynamic routes + API)
   images: {
     unoptimized: true,
   },
-  basePath: '/trottinettes-maroc',
-  assetPrefix: '/trottinettes-maroc/',
+  // basePath and assetPrefix removed for local dev - uncomment when deploying to subdirectory
+  // basePath: '/trottinettes-maroc',
+  // assetPrefix: '/trottinettes-maroc/',
 }
 
 module.exports = nextConfig

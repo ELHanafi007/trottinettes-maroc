@@ -16,6 +16,16 @@ html, body {
   background-color: #0a0a0a;
   color: #f0f0f0;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-padding-top: 80px;
+}
+
+/* Prevent zoom on input focus on mobile */
+@media screen and (max-width: 768px) {
+  input, select, textarea, button {
+    font-size: 16px !important;
+  }
 }
 
 /* Custom scrollbar */
@@ -46,6 +56,11 @@ html, body {
   100% { transform: translateX(-50%); }
 }
 .animate-marquee { animation: marquee 20s linear infinite; }
+
+/* Pause marquee on mobile for better UX */
+@media (max-width: 768px) {
+  .animate-marquee { animation-duration: 30s; }
+}
 
 /* Glow pulse */
 @keyframes glow-pulse {
@@ -97,6 +112,14 @@ html, body {
   .animate-marquee { animation: none; }
   .animate-flicker { animation: none; opacity: 1; }
   .animate-glow { animation: none; }
+}
+
+/* Touch-friendly improvements */
+@media (max-width: 768px) {
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
 
 @layer base {

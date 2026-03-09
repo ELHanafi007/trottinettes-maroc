@@ -1,4 +1,4 @@
-// File: /home/zenith/Desktop/trotinettes-morocco/app/layout.tsx
+// File: /home/zenith/Desktop/trottinettes-maroc/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

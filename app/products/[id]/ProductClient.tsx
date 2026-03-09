@@ -3,13 +3,17 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Scooter, scooters } from '@/data/scooters'
+import { Scooter } from '@/types'
+import { useState } from 'react'
 
 interface ProductClientProps {
   scooter: Scooter
+  relatedProducts: Scooter[]
 }
 
-export default function ProductClient({ scooter }: ProductClientProps) {
+export default function ProductClient({ scooter, relatedProducts }: ProductClientProps) {
+  const [selectedImage, setSelectedImage] = useState(0)
+  
   const specs = [
     { value: scooter.maxSpeed, unit: 'km/h', label: 'Vitesse Max' },
     { value: scooter.range, unit: 'km', label: 'Autonomie' },
@@ -34,7 +38,7 @@ export default function ProductClient({ scooter }: ProductClientProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10">
 
-          {/* Left — image */}
+          {/* Left — image gallery */}
           <motion.div
             className="bg-[#0a0a0a] relative overflow-hidden min-h-[420px] group"
             initial={{ opacity: 0, x: -40 }}
@@ -42,7 +46,7 @@ export default function ProductClient({ scooter }: ProductClientProps) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
-              src={scooter.imageFull}
+              src={scooter.images[selectedImage]}
               alt={scooter.name}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -57,6 +61,21 @@ export default function ProductClient({ scooter }: ProductClientProps) {
             {scooter.badge && (
               <div className="absolute top-6 right-6 z-10 bg-[#cc0000] text-white font-black text-xs px-3 py-1 uppercase tracking-widest">
                 {scooter.badge}
+              </div>
+            )}
+            
+            {/* Thumbnail navigation */}
+            {scooter.images.length > 1 && (
+              <div className="absolute bottom-4 right-4 z-10 flex gap-2">
+                {scooter.images.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedImage(idx)}
+                    className={`w-16 h-12 border-2 overflow-hidden transition-all ${selectedImage === idx ? 'border-[#cc0000]' : 'border-white/20 hover:border-white/50'}`}
+                  >
+                    <Image src={img} alt={`View ${idx + 1}`} fill className="object-cover" />
+                  </button>
+                ))}
               </div>
             )}
           </motion.div>
@@ -160,35 +179,37 @@ export default function ProductClient({ scooter }: ProductClientProps) {
         </div>
 
         {/* Related products */}
-        <div className="mt-16">
-          <h2 className="font-display text-3xl mb-6">AUTRES <span className="text-[#cc0000]">MODÈLES</span></h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
-            {scooters.filter(s => s.id !== scooter.id).slice(0, 3).map((s, i) => (
-              <motion.div
-                key={s.id}
-                className="bg-[#0a0a0a] group overflow-hidden"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <div className="relative h-36 overflow-hidden">
-                  <Image src={s.image} alt={s.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="33vw" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
-                </div>
-                <div className="p-4 flex items-center justify-between">
-                  <div>
-                    <div className="font-display text-lg group-hover:text-[#cc0000] transition-colors">{s.name.toUpperCase()}</div>
-                    <div className="font-display text-[#cc0000] text-sm">{s.price.toLocaleString()} MAD</div>
+        {relatedProducts.length > 0 && (
+          <div className="mt-16">
+            <h2 className="font-display text-3xl mb-6">AUTRES <span className="text-[#cc0000]">MODÈLES</span></h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
+              {relatedProducts.map((s, i) => (
+                <motion.div
+                  key={s.id}
+                  className="bg-[#0a0a0a] group overflow-hidden"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <div className="relative h-36 overflow-hidden">
+                    <Image src={s.images[0]} alt={s.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="33vw" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
                   </div>
-                  <Link href={`/products/${s.id}`} className="bg-[#cc0000] hover:bg-[#e50000] text-white font-black text-xs px-3 py-2 uppercase tracking-widest transition-colors">
-                    Voir →
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="p-4 flex items-center justify-between">
+                    <div>
+                      <div className="font-display text-lg group-hover:text-[#cc0000] transition-colors">{s.name.toUpperCase()}</div>
+                      <div className="font-display text-[#cc0000] text-sm">{s.price.toLocaleString()} MAD</div>
+                    </div>
+                    <Link href={`/products/${s.id}`} className="bg-[#cc0000] hover:bg-[#e50000] text-white font-black text-xs px-3 py-2 uppercase tracking-widest transition-colors">
+                      Voir →
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )

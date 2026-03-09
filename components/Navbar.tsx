@@ -4,12 +4,13 @@ import Link from 'next/link'
 import { useEffect, useState, useRef } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Home, Zap, Phone, ShoppingBag, Tag, ChevronRight } from 'lucide-react'
+import { Home, Zap, Phone, ShoppingBag, Tag, ChevronRight, Menu, X } from 'lucide-react'
 
 const navItems = [
   { title: 'Accueil', href: '/', icon: Home },
   { title: 'Produits', href: '/products', icon: Zap },
   { title: 'Marques', href: '/#brands', icon: Tag },
+  { title: 'Pourquoi Nous', href: '/#why-us', icon: Zap },
   { title: 'Contact', href: '/contact', icon: Phone },
 ]
 
@@ -30,11 +31,25 @@ export default function Navbar() {
 
   const transparent = isHome && !scrolled
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/#') && isHome) {
+      e.preventDefault()
+      const sectionId = href.replace('/#', '')
+      const section = document.getElementById(sectionId)
+      if (section) {
+        const navHeight = 80
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY - navHeight
+        window.scrollTo({ top: sectionTop, behavior: 'smooth' })
+        setMenuOpen(false)
+      }
+    }
+  }
+
   return (
     <>
       {/* Top accent line */}
       <div className="fixed top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#cc0000] to-transparent z-[60]" />
-      
+
       <nav
         ref={navbarRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -43,39 +58,40 @@ export default function Navbar() {
             : 'bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <Link 
-              href="/" 
-              className="group flex items-center gap-3"
+            <Link
+              href="/"
+              className="group flex items-center gap-2 sm:gap-3"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-[#cc0000] blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
-                <div className="relative font-display text-3xl text-white tracking-tight">
+                <div className="relative font-display text-xl sm:text-3xl text-white tracking-tight">
                   TROTTINETTES<span className="text-[#cc0000]">.</span>FES
                 </div>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1">
               {navItems.map((item, i) => (
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="group relative px-5 py-2.5 overflow-hidden"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="group relative px-4 py-2.5 overflow-hidden"
                   onMouseEnter={() => setHoveredIndex(i)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
                   {/* Hover background */}
-                  <div 
+                  <div
                     className={`absolute inset-0 bg-[#cc0000]/5 transition-transform duration-500 ${
                       hoveredIndex === i ? 'scale-100' : 'scale-0'
                     }`}
                     style={{ borderRadius: '4px' }}
                   />
-                  
+
                   {/* Active indicator */}
                   {pathname === item.href && (
                     <motion.div
@@ -84,19 +100,19 @@ export default function Navbar() {
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
-                  
+
                   <div className="relative flex items-center gap-2">
-                    <item.icon 
-                      size={14} 
+                    <item.icon
+                      size={14}
                       className={`transition-colors duration-300 ${
-                        pathname === item.href 
-                          ? 'text-[#cc0000]' 
+                        pathname === item.href
+                          ? 'text-[#cc0000]'
                           : 'text-white/40 group-hover:text-[#cc0000]'
-                      }`} 
+                      }`}
                     />
                     <span className={`font-black text-xs uppercase tracking-widest transition-colors duration-300 ${
-                      pathname === item.href 
-                        ? 'text-[#cc0000]' 
+                      pathname === item.href
+                        ? 'text-[#cc0000]'
                         : 'text-white/50 group-hover:text-white'
                     }`}>
                       {item.title}
@@ -104,7 +120,7 @@ export default function Navbar() {
                   </div>
                 </Link>
               ))}
-              
+
               {/* CTA Button */}
               <Link
                 href="/contact"
@@ -112,34 +128,34 @@ export default function Navbar() {
               >
                 <ShoppingBag size={14} />
                 <span>Commander</span>
-                <ChevronRight 
-                  size={14} 
-                  className="transform group-hover:translate-x-1 transition-transform" 
+                <ChevronRight
+                  size={14}
+                  className="transform group-hover:translate-x-1 transition-transform"
                 />
               </Link>
             </div>
 
-            {/* Mobile Hamburger */}
+            {/* Mobile/Tablet Hamburger */}
             <button
-              className="md:hidden relative w-10 h-10 flex items-center justify-center text-white focus:outline-none"
+              className="lg:hidden relative w-10 h-10 flex items-center justify-center text-white focus:outline-none"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Menu"
             >
               <div className="relative w-6 h-5">
-                <span 
+                <span
                   className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
                     menuOpen ? 'rotate-45 top-2' : 'top-0'
-                  }`} 
+                  }`}
                 />
-                <span 
+                <span
                   className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
                     menuOpen ? 'opacity-0' : 'opacity-100'
-                  } top-2`} 
+                  } top-2`}
                 />
-                <span 
+                <span
                   className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
                     menuOpen ? '-rotate-45 top-2' : 'top-4'
-                  }`} 
+                  }`}
                 />
               </div>
             </button>
@@ -156,16 +172,16 @@ export default function Navbar() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setMenuOpen(false)}
-                className="fixed inset-0 bg-[#0a0a0a]/95 backdrop-blur-sm z-40 md:hidden"
+                className="fixed inset-0 bg-[#0a0a0a]/95 backdrop-blur-sm z-40 lg:hidden"
               />
-              
+
               {/* Menu Panel */}
               <motion.div
                 initial={{ opacity: 0, x: '100%' }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: '100%' }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-[#0a0a0a] border-l border-white/10 z-50 md:hidden"
+                className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-[#0a0a0a] border-l border-white/10 z-50 lg:hidden"
               >
                 {/* Mobile Header */}
                 <div className="flex items-center justify-between p-6 border-b border-white/10">
@@ -176,9 +192,7 @@ export default function Navbar() {
                     onClick={() => setMenuOpen(false)}
                     className="w-8 h-8 flex items-center justify-center text-white/50 hover:text-white"
                   >
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <X size={20} />
                   </button>
                 </div>
 
@@ -193,24 +207,24 @@ export default function Navbar() {
                     >
                       <Link
                         href={item.href}
-                        onClick={() => setMenuOpen(false)}
+                        onClick={(e) => handleNavClick(e, item.href)}
                         className={`group flex items-center gap-4 px-4 py-4 rounded-lg transition-all duration-300 ${
-                          pathname === item.href
+                          pathname === item.href && !item.href.startsWith('/#')
                             ? 'bg-[#cc0000]/10 border border-[#cc0000]/30'
                             : 'hover:bg-white/[0.02]'
                         }`}
                       >
-                        <item.icon 
-                          size={18} 
+                        <item.icon
+                          size={18}
                           className={`transition-colors ${
-                            pathname === item.href 
-                              ? 'text-[#cc0000]' 
+                            pathname === item.href && !item.href.startsWith('/#')
+                              ? 'text-[#cc0000]'
                               : 'text-white/40 group-hover:text-[#cc0000]'
-                          }`} 
+                          }`}
                         />
                         <span className={`font-black text-sm uppercase tracking-widest transition-colors ${
-                          pathname === item.href 
-                            ? 'text-[#cc0000]' 
+                          pathname === item.href && !item.href.startsWith('/#')
+                            ? 'text-[#cc0000]'
                             : 'text-white/50 group-hover:text-white'
                         }`}>
                           {item.title}
@@ -219,7 +233,7 @@ export default function Navbar() {
                       </Link>
                     </motion.div>
                   ))}
-                  
+
                   {/* Mobile CTA */}
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}

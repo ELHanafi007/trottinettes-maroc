@@ -16,6 +16,22 @@ const config: Config = {
           white: '#f0f0f0',
         },
       },
+      screens: {
+        'xs': '475px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+      },
+      fontSize: {
+        'xxs': ['0.65rem', { lineHeight: '0.75rem' }],
+      },
     },
   },
   plugins: [],

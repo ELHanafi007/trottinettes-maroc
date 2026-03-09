@@ -1,16 +1,18 @@
 import { notFound } from 'next/navigation'
-import { brands } from '@/data/brands'
-import { scooters } from '@/data/scooters'
+import { getBrands } from '@/data/brands'
+import { getScooters } from '@/data/scooters'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, MapPin, Calendar, Zap, Battery, Gauge, Weight } from 'lucide-react'
 import BrandHero from './BrandHero'
+import { Brand, Scooter } from '@/types'
 
 interface BrandPageProps {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
+  const brands = await getBrands()
   return brands.map((brand) => ({
     slug: brand.id,
   }))
@@ -18,13 +20,16 @@ export async function generateStaticParams() {
 
 export default async function BrandPage({ params }: BrandPageProps) {
   const { slug } = await params
-  const brand = brands.find((b) => b.id === slug)
+  const brands = await getBrands()
+  const scooters = await getScooters()
   
+  const brand = brands.find((b: Brand) => b.id === slug)
+
   if (!brand) {
     notFound()
   }
 
-  const brandScooters = scooters.filter((s) => s.brand === brand.id)
+  const brandScooters = scooters.filter((s: Scooter) => s.brand === brand.id)
 
   return (
     <div className="bg-[#0a0a0a] text-[#f0f0f0] min-h-screen font-body">
@@ -85,7 +90,7 @@ export default async function BrandPage({ params }: BrandPageProps) {
 
           {brandScooters.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {brandScooters.map((scooter) => (
+              {brandScooters.map((scooter: Scooter) => (
                 <Link
                   key={scooter.id}
                   href={`/products/${scooter.id}`}
@@ -94,7 +99,7 @@ export default async function BrandPage({ params }: BrandPageProps) {
                   {/* Image */}
                   <div className="relative h-64 bg-gradient-to-b from-white/[0.05] to-transparent overflow-hidden">
                     <Image
-                      src={scooter.image}
+                      src={scooter.images[0]}
                       alt={scooter.name}
                       width={400}
                       height={300}
@@ -168,7 +173,7 @@ export default async function BrandPage({ params }: BrandPageProps) {
             PRÊT À <span className="text-[#cc0000]">COMMANDER</span> ?
           </h2>
           <p className="text-white/40 text-lg mb-10 max-w-xl mx-auto">
-            Contactez-nous pour plus d&apos;informations sur les modèles {brand.name}. 
+            Contactez-nous pour plus d&apos;informations sur les modèles {brand.name}.
             Livraison rapide partout au Maroc.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

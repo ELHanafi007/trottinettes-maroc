@@ -1,18 +1,21 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { scooters } from '@/data/scooters'
+import { getScooters } from '@/data/scooters'
 import { notFound } from 'next/navigation'
 import ProductClient from './ProductClient'
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const scooters = await getScooters()
   return scooters.map((scooter) => ({
     id: scooter.id,
   }))
 }
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
+export default async function ProductDetailPage({ params }: { params: { id: string } }) {
+  const scooters = await getScooters()
   const scooter = scooters.find((s) => s.id === params.id)
+  
   if (!scooter) return notFound()
 
-  return <ProductClient scooter={scooter} />
+  const relatedProducts = scooters.filter(s => s.id !== scooter.id).slice(0, 3)
+
+  return <ProductClient scooter={scooter} relatedProducts={relatedProducts} />
 }

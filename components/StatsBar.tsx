@@ -39,16 +39,16 @@ export default function StatsBar() {
         {stats.map((stat, i) => (
           <motion.div
             key={stat.label}
-            className="py-10 px-8 text-center hover:bg-white/5 transition-colors group cursor-default"
+            className="py-6 sm:py-8 md:py-10 px-3 sm:px-4 md:px-8 text-center hover:bg-white/5 transition-colors group cursor-default"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
           >
-            <div className="font-display text-5xl text-[#cc0000] group-hover:scale-110 transition-transform duration-300 inline-block">
+            <div className="font-display text-3xl sm:text-4xl md:text-5xl text-[#cc0000] group-hover:scale-110 transition-transform duration-300 inline-block">
               <AnimatedNumber value={stat.value} suffix={stat.unit} />
             </div>
-            <div className="text-white/40 text-xs uppercase tracking-widest mt-2">{stat.label}</div>
+            <div className="text-white/40 text-[10px] sm:text-xs uppercase tracking-widest mt-1 sm:mt-2 leading-tight">{stat.label}</div>
           </motion.div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Brand } from '@/data/brands'
+import { Brand } from '@/types'
 import Image from 'next/image'
 
 interface BrandHeroProps {
@@ -13,7 +13,7 @@ export default function BrandHero({ brand }: BrandHeroProps) {
     <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#cc0000]/10 via-[#0a0a0a]/80 to-[#0a0a0a]" />
-      
+
       {/* Logo */}
       <div className="relative z-10 text-center px-6">
         <motion.div
@@ -33,7 +33,7 @@ export default function BrandHero({ brand }: BrandHeroProps) {
             />
           </div>
         </motion.div>
-        
+
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export default function BrandHero({ brand }: BrandHeroProps) {
         >
           {brand.name.toUpperCase()}
         </motion.h1>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ export default function BrandHero({ brand }: BrandHeroProps) {
         >
           {brand.tagline}
         </motion.p>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

@@ -1,0 +1,149 @@
+{
+  "scooters": [
+    {
+      "id": "ninebot-max-g2",
+      "name": "Ninebot Max G2",
+      "description": "La trottinette la plus avancée de Ninebot. Suspension avant/arrière, clignotants intégrés, autonomie exceptionnelle.",
+      "price": 4200,
+      "maxSpeed": 25,
+      "range": 70,
+      "weight": 24,
+      "motorPower": 450,
+      "batteryCapacity": 15.3,
+      "images": ["/scooters/speedster-pro.webp"],
+      "badge": "Best Seller",
+      "brand": "ninebot"
+    },
+    {
+      "id": "xiaomi-ultra-4",
+      "name": "Xiaomi 4 Ultra",
+      "description": "Le flagship de Xiaomi. Double freinage, autonomie de 70km, design primé. La référence du marché.",
+      "price": 3800,
+      "maxSpeed": 25,
+      "range": 70,
+      "weight": 17,
+      "motorPower": 500,
+      "batteryCapacity": 12.8,
+      "images": ["/scooters/city-rider.webp"],
+      "brand": "xiaomi"
+    },
+    {
+      "id": "vespa-elettrica-70",
+      "name": "Vespa Elettrica 70",
+      "description": "L'icône italienne réinventée. Design intemporel Vespa, technologie électrique moderne, luxe et prestige.",
+      "price": 6500,
+      "maxSpeed": 45,
+      "range": 100,
+      "weight": 130,
+      "motorPower": 4000,
+      "batteryCapacity": 4.2,
+      "images": ["/scooters/eco-glide.webp"],
+      "badge": "Luxe",
+      "brand": "vespa"
+    },
+    {
+      "id": "bmw-ce-02",
+      "name": "BMW CE 02",
+      "description": "L'excellence allemande urbaine. Conception BMW i, qualité automobile, technologie de pointe.",
+      "price": 8500,
+      "maxSpeed": 45,
+      "range": 90,
+      "weight": 115,
+      "motorPower": 11000,
+      "batteryCapacity": 8.9,
+      "images": ["/scooters/sport-x.webp"],
+      "badge": "Premium",
+      "brand": "bmw"
+    },
+    {
+      "id": "kaabo-wolf-king",
+      "name": "Kaabo Wolf King GT Pro",
+      "description": "La bête tout-terrain. 100km/h, 150km d'autonomie, suspension hydraulique. Pour les riders extrêmes.",
+      "price": 12500,
+      "maxSpeed": 100,
+      "range": 150,
+      "weight": 45,
+      "motorPower": 2400,
+      "batteryCapacity": 35,
+      "images": ["/scooters/mini-go.webp"],
+      "badge": "Tout-Terrain",
+      "brand": "kaabo"
+    },
+    {
+      "id": "inokim-oxo",
+      "name": "Inokim OXO",
+      "description": "Le summum du luxe israélien. Double moteur, finition premium, confort exceptionnel.",
+      "price": 9500,
+      "maxSpeed": 65,
+      "range": 100,
+      "weight": 42,
+      "motorPower": 2000,
+      "batteryCapacity": 25.2,
+      "images": ["/scooters/power-beast.webp"],
+      "badge": "Haut de Gamme",
+      "brand": "inokim"
+    }
+  ],
+  "brands": [
+    {
+      "id": "ninebot",
+      "name": "Segway-Ninebot",
+      "logo": "/brands/ninebot.svg",
+      "tagline": "Leader Mondial de la Mobilité",
+      "description": "Segway-Ninebot domine le marché mondial avec plus de 50% de part de marché. Innovation, qualité et fiabilité inégalées.",
+      "products": ["Ninebot Max G2", "Ninebot F2 Pro", "Segway E2 Plus", "Ninebot KickScooter D38"],
+      "founded": "2015",
+      "origin": "Chine/USA"
+    },
+    {
+      "id": "xiaomi",
+      "name": "Xiaomi",
+      "logo": "/brands/xiaomi.svg",
+      "tagline": "La Technologie Accessible",
+      "description": "Xiaomi révolutionne la mobilité urbaine avec des trottinettes alliant design minimaliste, performance et prix accessible. Plus de 10 millions d'unités vendues.",
+      "products": ["Mi Scooter 4 Ultra", "Mi Scooter 4 Pro 2nd", "Mi Scooter 4 Lite", "Mi Scooter Essential"],
+      "founded": "2010",
+      "origin": "Chine"
+    },
+    {
+      "id": "vespa",
+      "name": "Vespa",
+      "logo": "/brands/vespa.svg",
+      "tagline": "L'Icone Italienne Électrique",
+      "description": "Depuis 1946, Vespa incarne l'élégance italienne. Leur gamme électrique maintient l'héritage de qualité et de style intemporel.",
+      "products": ["Vespa Elettrica 70", "Vespa Elettrica Red", "Vespa Elettrica Yellows"],
+      "founded": "1946",
+      "origin": "Italie"
+    },
+    {
+      "id": "bmw",
+      "name": "BMW",
+      "logo": "/brands/bmw.svg",
+      "tagline": "L'Excellence Allemande",
+      "description": "BMW apporte son savoir-faire automobile à la mobilité électrique urbaine. Ingénierie de précision, sécurité et prestige allemand.",
+      "products": ["BMW iX1 Scooter", "BMW CE 02", "BMW i Mobility Scooter"],
+      "founded": "1916",
+      "origin": "Allemagne"
+    },
+    {
+      "id": "kaabo",
+      "name": "Kaabo",
+      "logo": "/brands/kaabo.svg",
+      "tagline": "Performance Tout-Terrain",
+      "description": "Kaabo est la référence des trottinettes performance et tout-terrain. Conçues pour les riders exigeants qui cherchent puissance et aventure.",
+      "products": ["Wolf King GT Pro", "Mantis King GT", "Wolf Warrior X", "Skywalker 8 Pro"],
+      "founded": "2014",
+      "origin": "Chine"
+    },
+    {
+      "id": "inokim",
+      "name": "Inokim",
+      "logo": "/brands/inokim.svg",
+      "tagline": "Premium Israélien",
+      "description": "Inokim combine ingénierie israélienne de pointe et design élégant. Des trottinettes haut de gamme avec une attention particulière aux détails.",
+      "products": ["Inokim OXO", "Inokim Quick 4", "Inokim Light 2 Pro", "Inokim Mini 2"],
+      "founded": "2010",
+      "origin": "Israël"
+    }
+  ]
+}
