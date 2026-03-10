@@ -11,10 +11,10 @@ export default function Footer() {
         {/* Brand */}
         <div className="bg-[#0a0a0a] p-6 sm:p-8 md:col-span-2">
           <Link href="/" className="font-display text-2xl sm:text-3xl md:text-4xl mb-3 sm:mb-4 block hover:text-[#cc0000] transition-colors">
-            TROTTINETTES<span className="text-[#cc0000]">.</span>FES
+            JOUET<span className="text-[#cc0000]">.</span>MAROC
           </Link>
           <p className="text-white/30 text-xs sm:text-sm leading-relaxed max-w-xs mb-4 sm:mb-6">
-            Les trottinettes électriques les plus rapides de Fès. Vitesse. Puissance. Style. Zéro compromis.
+            Les trottinettes électriques les plus rapides du Maroc. Vitesse. Puissance. Style. Zéro compromis.
           </p>
           <div className="flex gap-2 sm:gap-3 flex-wrap">
             {[
@@ -77,12 +77,12 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="mailto:contact@trottinettes-fes.ma"
+                href="mailto:contact@jouetmaroc.ma"
                 className="flex items-start gap-2 text-white/40 hover:text-[#cc0000] transition-colors"
                 aria-label="Envoyez-nous un email"
               >
                 <span aria-hidden="true">✉️</span>
-                <span>contact@trottinettes-fes.ma</span>
+                <span>contact@jouetmaroc.ma</span>
               </a>
             </li>
             <li className="flex items-start gap-2 text-white/40">
@@ -97,7 +97,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3">
           <span className="text-white/20 text-[10px] sm:text-xs uppercase tracking-widest text-center sm:text-left">
-            © {year} Trottinettes.FES — Tous droits réservés.
+            © {year} JOUET MAROC — Tous droits réservés.
           </span>
           <span className="text-[#cc0000]/50 text-[10px] sm:text-xs uppercase tracking-widest font-black animate-flicker" aria-hidden="true">
             VITESSE. PUISSANCE. STYLE.

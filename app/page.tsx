@@ -7,8 +7,8 @@ import { getScooters } from '@/data/scooters'
 import { getBrands } from '@/data/brands'
 
 const marqueeItems = [
-  'VITESSE MAXIMALE', 'LIVRAISON FES', 'GARANTIE 1 AN', 'PUISSANCE BRUTE',
-  'ÉLECTRIQUE', 'TROTTINETTES.FES', 'TOP PERFORMANCE', 'ZÉRO ÉMISSION',
+  'VITESSE MAXIMALE', 'LIVRAISON MAROC', 'GARANTIE 1 AN', 'PUISSANCE BRUTE',
+  'ÉLECTRIQUE', 'JOUET.MAROC', 'TOP PERFORMANCE', 'ZÉRO ÉMISSION',
 ]
 
 export default async function HomePage() {
@@ -65,7 +65,7 @@ export default async function HomePage() {
             <span className="text-[#cc0000] font-black uppercase tracking-[0.3em] text-[10px] sm:text-xs flex items-center gap-2 mb-3">
               <span className="w-4 sm:w-6 h-[2px] bg-[#cc0000]" /> Pourquoi Nous
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight">L&apos;AVANTAGE<br /><span className="text-[#cc0000]">TROTTINETTES.FES</span></h2>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight">L&apos;AVANTAGE<br /><span className="text-[#cc0000]">JOUET MAROC</span></h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
             {[

@@ -71,7 +71,7 @@ export default function ProductClient({ scooter, relatedProducts }: ProductClien
                   <button
                     key={idx}
                     onClick={() => setSelectedImage(idx)}
-                    className={`w-16 h-12 border-2 overflow-hidden transition-all ${selectedImage === idx ? 'border-[#cc0000]' : 'border-white/20 hover:border-white/50'}`}
+                    className={`w-16 h-12 border-2 overflow-hidden transition-all relative ${selectedImage === idx ? 'border-[#cc0000]' : 'border-white/20 hover:border-white/50'}`}
                   >
                     <Image src={img} alt={`View ${idx + 1}`} fill className="object-cover" />
                   </button>

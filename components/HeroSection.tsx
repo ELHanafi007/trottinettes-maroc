@@ -46,8 +46,8 @@ export default function HeroSection() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            TROTTINETTES<br />
-            <span className="text-[#cc0000]">FES</span>
+            JOUET<br />
+            <span className="text-[#cc0000]">MAROC</span>
           </motion.h1>
         </div>
 

@@ -23,3 +23,12 @@ export interface Brand {
   founded?: string
   origin?: string
 }
+
+export interface Sale {
+  id: string
+  productId: string
+  productName: string
+  amount: number
+  date: string
+  customerName: string
+}

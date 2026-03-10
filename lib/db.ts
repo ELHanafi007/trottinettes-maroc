@@ -1,15 +1,20 @@
 import { readFile, writeFile } from 'fs/promises'
 import path from 'path'
-import { Scooter, Brand } from '@/types'
+import { Scooter, Brand, Sale } from '@/types'
 
 const dbPath = path.join(process.cwd(), 'data', 'db.json')
 
-export async function readDb(): Promise<{ scooters: Scooter[]; brands: Brand[] }> {
+export async function readDb(): Promise<{ scooters: Scooter[]; brands: Brand[]; sales: Sale[] }> {
   const data = await readFile(dbPath, 'utf-8')
-  return JSON.parse(data)
+  const parsed = JSON.parse(data)
+  return {
+    scooters: parsed.scooters || [],
+    brands: parsed.brands || [],
+    sales: parsed.sales || [],
+  }
 }
 
-export async function writeDb(data: { scooters: Scooter[]; brands: Brand[] }): Promise<void> {
+export async function writeDb(data: { scooters: Scooter[]; brands: Brand[]; sales: Sale[] }): Promise<void> {
   await writeFile(dbPath, JSON.stringify(data, null, 2), 'utf-8')
 }
 
@@ -64,5 +69,16 @@ export async function saveBrand(brand: Brand): Promise<void> {
 export async function deleteBrand(id: string): Promise<void> {
   const db = await readDb()
   db.brands = db.brands.filter((b) => b.id !== id)
+  await writeDb(db)
+}
+
+export async function getSales(): Promise<Sale[]> {
+  const db = await readDb()
+  return db.sales
+}
+
+export async function saveSale(sale: Sale): Promise<void> {
+  const db = await readDb()
+  db.sales.push(sale)
   await writeDb(db)
 }

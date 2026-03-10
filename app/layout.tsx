@@ -4,21 +4,24 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import BackToTop from '@/components/BackToTop'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 export const metadata: Metadata = {
-  title: 'Trottinettes Fes — Scooters Électriques',
-  description: 'Les scooters électriques les plus rapides de Fès. Vitesse. Puissance. Style.',
+  title: 'JOUET MAROC — Scooters Électriques Premium',
+  description: 'Les scooters électriques les plus performants du Maroc. Vitesse. Puissance. Style.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <body className="bg-[#0a0a0a] text-[#f0f0f0]">
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <WhatsAppButton />
-        <BackToTop />
-        <Footer />
+    <html lang="fr" className="dark">
+      <body className="bg-white dark:bg-[#0a0a0a] text-[#0a0a0a] dark:text-[#f0f0f0] transition-colors duration-300">
+        <ThemeProvider>
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <WhatsAppButton />
+          <BackToTop />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

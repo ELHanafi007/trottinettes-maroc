@@ -35,7 +35,7 @@ export default function BrandsSection({ brands }: BrandsSectionProps) {
             NOS <span className="text-[#cc0000]">MARQUES</span>
           </h2>
           <p className="text-white/40 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed px-4">
-            Les meilleures marques mondiales de trottinettes électriques.
+            Les meilleures marques mondiales de machines électriques.
             Qualité certifiée, garantie officielle et SAV au Maroc.
           </p>
         </motion.div>

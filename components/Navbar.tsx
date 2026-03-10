@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Home, Zap, Phone, ShoppingBag, Tag, ChevronRight, Menu, X } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
 
 const navItems = [
   { title: 'Accueil', href: '/', icon: Home },
@@ -68,7 +69,7 @@ export default function Navbar() {
               <div className="relative">
                 <div className="absolute inset-0 bg-[#cc0000] blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
                 <div className="relative font-display text-xl sm:text-3xl text-white tracking-tight">
-                  TROTTINETTES<span className="text-[#cc0000]">.</span>FES
+                  JOUET<span className="text-[#cc0000]">.</span>MAROC
                 </div>
               </div>
             </Link>
@@ -86,7 +87,7 @@ export default function Navbar() {
                 >
                   {/* Hover background */}
                   <div
-                    className={`absolute inset-0 bg-[#cc0000]/5 transition-transform duration-500 ${
+                    className={`absolute inset-0 bg-[#cc0000]/5 dark:bg-[#cc0000]/5 transition-transform duration-500 ${
                       hoveredIndex === i ? 'scale-100' : 'scale-0'
                     }`}
                     style={{ borderRadius: '4px' }}
@@ -107,13 +108,13 @@ export default function Navbar() {
                       className={`transition-colors duration-300 ${
                         pathname === item.href
                           ? 'text-[#cc0000]'
-                          : 'text-white/40 group-hover:text-[#cc0000]'
+                          : 'text-black/40 dark:text-white/40 group-hover:text-[#cc0000]'
                       }`}
                     />
                     <span className={`font-black text-xs uppercase tracking-widest transition-colors duration-300 ${
                       pathname === item.href
                         ? 'text-[#cc0000]'
-                        : 'text-white/50 group-hover:text-white'
+                        : 'text-black/50 dark:text-white/50 group-hover:text-black dark:group-hover:text-white'
                     }`}>
                       {item.title}
                     </span>
@@ -121,44 +122,51 @@ export default function Navbar() {
                 </Link>
               ))}
 
-              {/* CTA Button */}
-              <Link
-                href="/contact"
-                className="group relative ml-4 flex items-center gap-2 bg-[#cc0000]/10 hover:bg-[#cc0000] border border-[#cc0000]/30 hover:border-[#cc0000] text-[#cc0000] hover:text-white font-black text-xs px-6 py-3 uppercase tracking-widest transition-all duration-300"
-              >
-                <ShoppingBag size={14} />
-                <span>Commander</span>
-                <ChevronRight
-                  size={14}
-                  className="transform group-hover:translate-x-1 transition-transform"
-                />
-              </Link>
+              <div className="ml-4 flex items-center gap-4">
+                <ThemeToggle />
+                
+                {/* CTA Button */}
+                <Link
+                  href="/contact"
+                  className="group relative flex items-center gap-2 bg-[#cc0000]/10 hover:bg-[#cc0000] border border-[#cc0000]/30 hover:border-[#cc0000] text-[#cc0000] hover:text-white font-black text-xs px-6 py-3 uppercase tracking-widest transition-all duration-300"
+                >
+                  <ShoppingBag size={14} />
+                  <span>Commander</span>
+                  <ChevronRight
+                    size={14}
+                    className="transform group-hover:translate-x-1 transition-transform"
+                  />
+                </Link>
+              </div>
             </div>
 
             {/* Mobile/Tablet Hamburger */}
-            <button
-              className="lg:hidden relative w-10 h-10 flex items-center justify-center text-white focus:outline-none"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Menu"
-            >
-              <div className="relative w-6 h-5">
-                <span
-                  className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
-                    menuOpen ? 'rotate-45 top-2' : 'top-0'
-                  }`}
-                />
-                <span
-                  className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
-                    menuOpen ? 'opacity-0' : 'opacity-100'
-                  } top-2`}
-                />
-                <span
-                  className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
-                    menuOpen ? '-rotate-45 top-2' : 'top-4'
-                  }`}
-                />
-              </div>
-            </button>
+            <div className="flex lg:hidden items-center gap-4">
+              <ThemeToggle />
+              <button
+                className="relative w-10 h-10 flex items-center justify-center text-black dark:text-white focus:outline-none"
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label="Menu"
+              >
+                <div className="relative w-6 h-5">
+                  <span
+                    className={`absolute left-0 w-6 h-0.5 bg-current transition-all duration-300 ${
+                      menuOpen ? 'rotate-45 top-2' : 'top-0'
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 w-6 h-0.5 bg-current transition-all duration-300 ${
+                      menuOpen ? 'opacity-0' : 'opacity-100'
+                    } top-2`}
+                  />
+                  <span
+                    className={`absolute left-0 w-6 h-0.5 bg-current transition-all duration-300 ${
+                      menuOpen ? '-rotate-45 top-2' : 'top-4'
+                    }`}
+                  />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -181,16 +189,16 @@ export default function Navbar() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: '100%' }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-[#0a0a0a] border-l border-white/10 z-50 lg:hidden"
+                className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-white dark:bg-[#0a0a0a] border-l border-black/10 dark:border-white/10 z-50 lg:hidden"
               >
                 {/* Mobile Header */}
-                <div className="flex items-center justify-between p-6 border-b border-white/10">
-                  <span className="font-display text-xl text-white">
-                    TROTTINETTES<span className="text-[#cc0000]">.</span>FES
+                <div className="flex items-center justify-between p-6 border-b border-black/10 dark:border-white/10">
+                  <span className="font-display text-xl text-black dark:text-white">
+                    JOUET<span className="text-[#cc0000]">.</span>MAROC
                   </span>
                   <button
                     onClick={() => setMenuOpen(false)}
-                    className="w-8 h-8 flex items-center justify-center text-white/50 hover:text-white"
+                    className="w-8 h-8 flex items-center justify-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white"
                   >
                     <X size={20} />
                   </button>
@@ -211,7 +219,7 @@ export default function Navbar() {
                         className={`group flex items-center gap-4 px-4 py-4 rounded-lg transition-all duration-300 ${
                           pathname === item.href && !item.href.startsWith('/#')
                             ? 'bg-[#cc0000]/10 border border-[#cc0000]/30'
-                            : 'hover:bg-white/[0.02]'
+                            : 'hover:bg-black/[0.02] dark:hover:bg-white/[0.02]'
                         }`}
                       >
                         <item.icon
@@ -219,17 +227,17 @@ export default function Navbar() {
                           className={`transition-colors ${
                             pathname === item.href && !item.href.startsWith('/#')
                               ? 'text-[#cc0000]'
-                              : 'text-white/40 group-hover:text-[#cc0000]'
+                              : 'text-black/40 dark:text-white/40 group-hover:text-[#cc0000]'
                           }`}
                         />
                         <span className={`font-black text-sm uppercase tracking-widest transition-colors ${
                           pathname === item.href && !item.href.startsWith('/#')
                             ? 'text-[#cc0000]'
-                            : 'text-white/50 group-hover:text-white'
+                            : 'text-black/50 dark:text-white/50 group-hover:text-black dark:group-hover:text-white'
                         }`}>
                           {item.title}
                         </span>
-                        <ChevronRight size={14} className="ml-auto text-white/20 group-hover:text-[#cc0000] transition-colors" />
+                        <ChevronRight size={14} className="ml-auto text-black/20 dark:text-white/20 group-hover:text-[#cc0000] transition-colors" />
                       </Link>
                     </motion.div>
                   ))}

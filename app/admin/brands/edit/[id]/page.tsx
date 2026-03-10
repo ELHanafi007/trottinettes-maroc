@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { Brand } from '@/types'
+import { ArrowLeft, Upload, Save } from 'lucide-react'
+import Link from 'next/link'
 
 export default function EditBrandPage() {
   const router = useRouter()
@@ -35,11 +37,11 @@ export default function EditBrandPage() {
     const file = e.target.files?.[0]
     if (!file) return
 
-    const formData = new FormData()
-    formData.append('file', file)
+    const dataForm = new FormData()
+    dataForm.append('file', file)
 
     try {
-      const res = await fetch('/api/admin/upload', { method: 'POST', body: formData })
+      const res = await fetch('/api/admin/upload', { method: 'POST', body: dataForm })
       const data = await res.json()
       if (data.url) {
         setFormData(prev => ({ ...prev, logo: data.url }))
@@ -71,106 +73,144 @@ export default function EditBrandPage() {
     }
   }
 
-  if (fetching) return <div>Loading...</div>
+  const inputClass = "w-full bg-white/[0.03] border border-white/10 px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#cc0000] transition-all duration-300 font-body text-sm"
+  const labelClass = "block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-3"
+
+  if (fetching) return (
+    <div className="min-h-[400px] flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#cc0000]"></div>
+    </div>
+  )
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Edit Brand</h1>
+    <div className="space-y-10 max-w-4xl">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <Link href="/admin/brands" className="inline-flex items-center gap-2 text-white/30 hover:text-[#cc0000] font-black uppercase tracking-widest text-[10px] transition-colors mb-4">
+            <ArrowLeft size={14} /> Retour à la liste
+          </Link>
+          <h1 className="font-display text-4xl sm:text-5xl text-white">MODIFIER <span className="text-[#cc0000]">MARQUE</span></h1>
+          <p className="text-white/20 text-xs mt-2 uppercase tracking-widest">ID: {id}</p>
+        </div>
+      </div>
       
-      <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-6 max-w-2xl">
-        <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="bg-white/[0.02] border border-white/5 p-8 sm:p-10 space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Brand ID</label>
+            <label className={labelClass}>ID de la Marque (URL slug)</label>
             <input
               type="text"
               required
+              readOnly
               value={formData.id}
-              onChange={(e) => setFormData(prev => ({ ...prev, id: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '-') }))}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
+              className={`${inputClass} opacity-50 cursor-not-allowed`}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Brand Name</label>
+            <label className={labelClass}>Nom de la Marque</label>
             <input
               type="text"
               required
               value={formData.name}
               onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
+              className={inputClass}
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Logo</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileUpload}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
-            />
-            {logoPreview && (
-              <div className="mt-2">
-                <img src={logoPreview} alt="Logo preview" className="w-24 h-24 object-contain bg-gray-100 rounded p-2" />
+          <div className="md:col-span-2">
+            <label className={labelClass}>Logo</label>
+            <div className="flex flex-col sm:flex-row gap-6 items-start">
+              <div className="relative flex-1 w-full group">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                />
+                <div className="w-full bg-white/[0.02] border-2 border-dashed border-white/10 group-hover:border-[#cc0000]/50 py-10 flex flex-col items-center justify-center transition-all duration-300">
+                  <Upload size={24} className="text-white/20 group-hover:text-[#cc0000] transition-colors mb-3" />
+                  <p className="text-white/40 text-[10px] font-black uppercase tracking-widest">Mettre à jour le logo</p>
+                </div>
               </div>
-            )}
+              {logoPreview && (
+                <div className="w-32 h-32 bg-white flex items-center justify-center p-4 border border-white/10 flex-shrink-0">
+                  <img src={logoPreview} alt="Logo preview" className="max-w-full max-h-full object-contain" />
+                </div>
+              )}
+            </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Tagline</label>
+          <div className="md:col-span-2">
+            <label className={labelClass}>Slogan (Tagline)</label>
             <input
               type="text"
               required
               value={formData.tagline}
               onChange={(e) => setFormData(prev => ({ ...prev, tagline: e.target.value }))}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
+              className={inputClass}
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+          <div className="md:col-span-2">
+            <label className={labelClass}>Description</label>
             <textarea
               required
               rows={4}
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
+              className={`${inputClass} resize-none`}
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Founded Year</label>
-              <input
-                type="text"
-                value={formData.founded}
-                onChange={(e) => setFormData(prev => ({ ...prev, founded: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Origin</label>
-              <input
-                type="text"
-                value={formData.origin}
-                onChange={(e) => setFormData(prev => ({ ...prev, origin: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
-              />
-            </div>
+          <div>
+            <label className={labelClass}>Année de Fondation</label>
+            <input
+              type="text"
+              value={formData.founded}
+              onChange={(e) => setFormData(prev => ({ ...prev, founded: e.target.value }))}
+              className={inputClass}
+            />
+          </div>
+
+          <div>
+            <label className={labelClass}>Origine</label>
+            <input
+              type="text"
+              value={formData.origin}
+              onChange={(e) => setFormData(prev => ({ ...prev, origin: e.target.value }))}
+              className={inputClass}
+            />
           </div>
         </div>
 
-        <div className="mt-6 flex gap-4">
+        <div className="pt-8 border-t border-white/5 flex gap-4">
           <button
             type="submit"
             disabled={loading}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition"
+            className="flex-1 bg-[#cc0000] hover:bg-[#e50000] text-white font-black py-5 uppercase tracking-widest transition-all duration-200 animate-glow text-sm flex items-center justify-center gap-2 disabled:opacity-50"
           >
-            {loading ? 'Saving...' : 'Update Brand'}
+            {loading ? (
+               <span className="flex items-center gap-2">
+                 <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                 </svg>
+                 Sauvegarde...
+               </span>
+            ) : (
+              <>
+                <Save size={18} />
+                Enregistrer Marque
+              </>
+            )}
           </button>
-          <a href="/admin/brands" className="text-gray-600 hover:text-gray-800">
-            Cancel
-          </a>
+          <Link
+            href="/admin/brands"
+            className="flex-1 bg-white/5 hover:bg-white/10 text-white font-black py-5 uppercase tracking-widest text-sm text-center border border-white/10 transition-colors"
+          >
+            Annuler
+          </Link>
         </div>
       </form>
     </div>

@@ -189,7 +189,7 @@ export default function ContactPage() {
                 {[
                   { icon: '📍', label: 'Adresse', value: 'Fès, Maroc', href: null },
                   { icon: '📞', label: 'Téléphone', value: '+212 6XX XXX XXX', href: 'tel:+212600000000' },
-                  { icon: '✉️', label: 'Email', value: 'contact@trottinettes-fes.ma', href: 'mailto:contact@trottinettes-fes.ma' },
+                  { icon: '✉️', label: 'Email', value: 'contact@jouetmaroc.ma', href: 'mailto:contact@jouetmaroc.ma' },
                   { icon: '🕐', label: 'Horaires', value: 'Lun–Sam : 9h–18h', href: null },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-5 group">

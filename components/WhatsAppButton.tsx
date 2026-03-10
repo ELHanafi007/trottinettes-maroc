@@ -33,7 +33,7 @@ export default function WhatsAppButton() {
       )}
 
       <motion.a
-        href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20vos%20trottinettes%20%C3%A9lectriques!"
+        href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20vos%20machines%20%C3%A9lectriques!"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Commander via WhatsApp — Réponse en moins d'1h"
