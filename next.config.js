@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export', // Commented out for admin panel support (dynamic routes + API)
+  // output: 'export', // Commented out for Vercel (supports SSR + API)
   images: {
     unoptimized: true,
   },
