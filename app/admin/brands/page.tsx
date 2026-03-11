@@ -1,5 +1,6 @@
 import { getBrands } from '@/lib/db'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default async function BrandsPage() {
   const brands = await getBrands()
@@ -35,7 +36,7 @@ export default async function BrandsPage() {
                 <tr key={brand.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4">
                     <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center overflow-hidden p-1">
-                      <img src={brand.logo} alt={brand.name} className="w-full h-full object-contain" />
+                      <Image src={brand.logo} alt={brand.name} width={48} height={48} className="w-full h-full object-contain" />
                     </div>
                   </td>
                   <td className="px-6 py-4 font-medium text-gray-900">{brand.name}</td>
@@ -75,7 +76,7 @@ export default async function BrandsPage() {
             <div key={brand.id} className="p-4 hover:bg-gray-50">
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden p-2">
-                  <img src={brand.logo} alt={brand.name} className="w-full h-full object-contain" />
+                  <Image src={brand.logo} alt={brand.name} width={64} height={64} className="w-full h-full object-contain" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-medium text-gray-900 text-sm">{brand.name}</h3>

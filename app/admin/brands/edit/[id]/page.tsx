@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
+import Image from 'next/image'
 import { Brand } from '@/types'
 import { ArrowLeft, Upload, Save } from 'lucide-react'
 import Link from 'next/link'
@@ -135,7 +136,7 @@ export default function EditBrandPage() {
               </div>
               {logoPreview && (
                 <div className="w-32 h-32 bg-white flex items-center justify-center p-4 border border-white/10 flex-shrink-0">
-                  <img src={logoPreview} alt="Logo preview" className="max-w-full max-h-full object-contain" />
+                  <Image src={logoPreview} alt="Logo preview" width={128} height={128} className="max-w-full max-h-full object-contain" />
                 </div>
               )}
             </div>

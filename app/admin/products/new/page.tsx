@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { Scooter, Brand } from '@/types'
 import { ArrowLeft, Upload, X, Save } from 'lucide-react'
 import Link from 'next/link'
@@ -239,7 +240,7 @@ export default function NewProductPage() {
               <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
                 {imagePreviews.map((src, index) => (
                   <div key={index} className="relative aspect-square bg-[#111] border border-white/5 group">
-                    <img src={src} alt={`Preview ${index}`} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" />
+                    <Image src={src} alt={`Preview ${index}`} width={200} height={200} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" />
                     <button
                       type="button"
                       onClick={() => removeImage(index)}

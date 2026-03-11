@@ -2,6 +2,7 @@
 
 import { Scooter } from '@/types'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Edit2, Trash2, Plus } from 'lucide-react'
 
 interface ProductListClientProps {
@@ -54,7 +55,7 @@ export default function ProductListClient({ scooters, brandMap }: ProductListCli
                 <tr key={scooter.id} className="hover:bg-white/[0.03] transition-colors group">
                   <td className="px-8 py-4">
                     <div className="w-16 h-12 bg-[#111] overflow-hidden relative border border-white/5">
-                      <img src={scooter.images[0]} alt={scooter.name} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" />
+                      <Image src={scooter.images[0]} alt={scooter.name} width={64} height={48} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </td>
                   <td className="px-8 py-4">
@@ -102,7 +103,7 @@ export default function ProductListClient({ scooters, brandMap }: ProductListCli
             <div key={scooter.id} className="p-6 hover:bg-white/[0.03] transition-colors">
               <div className="flex items-start gap-6">
                 <div className="w-24 h-20 bg-[#111] border border-white/5 flex-shrink-0 overflow-hidden relative">
-                  <img src={scooter.images[0]} alt={scooter.name} className="w-full h-full object-cover opacity-60" />
+                  <Image src={scooter.images[0]} alt={scooter.name} width={96} height={80} className="w-full h-full object-cover opacity-60" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-display text-xl text-white truncate">{scooter.name.toUpperCase()}</h3>

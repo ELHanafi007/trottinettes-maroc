@@ -1,5 +1,6 @@
 import { getScooters, getBrands, getSales } from '@/lib/db'
 import { TrendingUp, ShoppingBag, Tag, DollarSign } from 'lucide-react'
+import Image from 'next/image'
 
 export default async function DashboardPage() {
   const [scooters, brands, sales] = await Promise.all([
@@ -72,7 +73,7 @@ export default async function DashboardPage() {
               <div key={scooter.id} className="flex items-center justify-between p-4 bg-white/[0.03] border border-white/5 hover:border-[#cc0000]/30 transition-colors">
                 <div className="flex items-center gap-4 min-w-0">
                   <div className="w-12 h-12 relative flex-shrink-0 bg-[#111] overflow-hidden">
-                    <img src={scooter.images[0]} alt={scooter.name} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" />
+                    <Image src={scooter.images[0]} alt={scooter.name} width={48} height={48} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <div className="min-w-0">
                     <p className="font-display text-lg text-white truncate">{scooter.name.toUpperCase()}</p>
