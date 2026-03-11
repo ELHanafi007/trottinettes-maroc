@@ -16,7 +16,7 @@ export default function HeroSection() {
       <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
         <GLSLHills height="100vh" width="100vw" speed={0.4} />
       </motion.div>
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#0a0a0a]/60 via-transparent to-[#0a0a0a]" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-white/60 dark:from-[#0a0a0a]/60 via-transparent to-white dark:to-[#0a0a0a]" />
       <div className="absolute left-4 md:left-8 top-1/4 bottom-1/4 w-[2px] bg-[#cc0000] z-20 animate-flicker hidden sm:block" />
 
       <motion.div

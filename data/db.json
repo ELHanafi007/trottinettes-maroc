@@ -94,36 +94,6 @@
       ],
       "badge": "Haut de Gamme",
       "brand": "inokim"
-    },
-    {
-      "name": "test test",
-      "description": "test test test test test test test test test test test test test ",
-      "price": 999999,
-      "maxSpeed": 9999999999,
-      "range": 9999999999,
-      "weight": 999999999999,
-      "motorPower": 999999999,
-      "batteryCapacity": 9999999999,
-      "images": [
-        "/uploads/1773171851642-Screenshot_2026-02-18_05-42-02.png"
-      ],
-      "badge": "lakhar",
-      "brand": "inokim",
-      "id": "test-test"
-    },
-    {
-      "name": "jhgfjhf",
-      "description": "kgf",
-      "price": 454,
-      "maxSpeed": 54545,
-      "range": 46445,
-      "weight": 45456645454,
-      "motorPower": 4654554654,
-      "batteryCapacity": 545445,
-      "images": [],
-      "badge": "jgf",
-      "brand": "xiaomi",
-      "id": "jhgfjhf"
     }
   ],
   "brands": [

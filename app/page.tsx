@@ -18,7 +18,7 @@ export default async function HomePage() {
   ])
 
   return (
-    <div className="bg-[#0a0a0a] text-[#f0f0f0] font-body overflow-x-hidden">
+    <div className="bg-white dark:bg-[#0a0a0a] text-black dark:text-[#f0f0f0] font-body overflow-x-hidden">
 
       {/* ── HERO ── */}
       <HeroSection />
@@ -73,11 +73,11 @@ export default async function HomePage() {
               { num: '02', title: 'Longue Autonomie', body: "Batteries haute performance jusqu'à 100km par charge. Jamais en panne.", icon: '🔋' },
               { num: '03', title: 'Garantie 1 An', body: 'Tous nos produits sont certifiés et garantis. SAV réactif à Fès.', icon: '🛡' },
             ].map((item) => (
-              <div key={item.num} className="bg-[#0a0a0a] p-6 sm:p-8 md:p-10 group hover:bg-white/[0.03] transition-colors cursor-default">
-                <div className="font-display text-5xl sm:text-6xl md:text-7xl text-white/5 group-hover:text-[#cc0000]/10 transition-colors mb-3 sm:mb-4">{item.num}</div>
+              <div key={item.num} className="bg-white dark:bg-[#0a0a0a] p-6 sm:p-8 md:p-10 group hover:bg-black/[0.03] dark:hover:bg-white/[0.03] transition-colors cursor-default">
+                <div className="font-display text-5xl sm:text-6xl md:text-7xl text-black/5 dark:text-white/5 group-hover:text-[#cc0000]/10 transition-colors mb-3 sm:mb-4">{item.num}</div>
                 <div className="text-2xl sm:text-3xl mb-3 sm:mb-4">{item.icon}</div>
-                <h3 className="font-display text-xl sm:text-2xl mb-2 sm:mb-3 group-hover:text-[#cc0000] transition-colors">{item.title.toUpperCase()}</h3>
-                <p className="text-white/40 text-xs sm:text-sm leading-relaxed">{item.body}</p>
+                <h3 className="font-display text-xl sm:text-2xl mb-2 sm:mb-3 group-hover:text-[#cc0000] transition-colors text-black dark:text-white">{item.title.toUpperCase()}</h3>
+                <p className="text-black/40 dark:text-white/40 text-xs sm:text-sm leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>

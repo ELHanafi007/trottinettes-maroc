@@ -56,7 +56,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           transparent
             ? 'bg-transparent'
-            : 'bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5'
+            : 'bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-black/5 dark:border-white/5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -68,7 +68,7 @@ export default function Navbar() {
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-[#cc0000] blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
-                <div className="relative font-display text-xl sm:text-3xl text-white tracking-tight">
+                <div className="relative font-display text-xl sm:text-3xl text-black dark:text-white tracking-tight">
                   JOUET<span className="text-[#cc0000]">.</span>MAROC
                 </div>
               </div>
