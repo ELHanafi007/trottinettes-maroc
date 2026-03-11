@@ -8,7 +8,7 @@ import { getBrands } from '@/data/brands'
 
 const marqueeItems = [
   'VITESSE MAXIMALE', 'LIVRAISON MAROC', 'GARANTIE 1 AN', 'PUISSANCE BRUTE',
-  'ÉLECTRIQUE', 'JOUET.MAROC', 'TOP PERFORMANCE', 'ZÉRO ÉMISSION',
+  'ÉLECTRIQUE', 'TROPANDAA', 'TOP PERFORMANCE', 'ZÉRO ÉMISSION',
 ]
 
 export default async function HomePage() {
@@ -65,13 +65,13 @@ export default async function HomePage() {
             <span className="text-[#cc0000] font-black uppercase tracking-[0.3em] text-[10px] sm:text-xs flex items-center gap-2 mb-3">
               <span className="w-4 sm:w-6 h-[2px] bg-[#cc0000]" /> Pourquoi Nous
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight">L&apos;AVANTAGE<br /><span className="text-[#cc0000]">JOUET MAROC</span></h2>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight">L&apos;AVANTAGE<br /><span className="text-[#cc0000]">TROPANDAA</span></h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
             {[
-              { num: '01', title: 'Livraison Rapide', body: 'Livraison à Fès et partout au Maroc en 2 à 5 jours ouvrables. Suivi en temps réel.', icon: '⚡' },
+              { num: '01', title: 'Livraison Rapide', body: 'Livraison à Casablanca et partout au Maroc en 2 à 5 jours ouvrables. Suivi en temps réel.', icon: '⚡' },
               { num: '02', title: 'Longue Autonomie', body: "Batteries haute performance jusqu'à 100km par charge. Jamais en panne.", icon: '🔋' },
-              { num: '03', title: 'Garantie 1 An', body: 'Tous nos produits sont certifiés et garantis. SAV réactif à Fès.', icon: '🛡' },
+              { num: '03', title: 'Garantie 1 An', body: 'Tous nos produits sont certifiés et garantis. SAV réactif à Casablanca.', icon: '🛡' },
             ].map((item) => (
               <div key={item.num} className="bg-white dark:bg-[#0a0a0a] p-6 sm:p-8 md:p-10 group hover:bg-black/[0.03] dark:hover:bg-white/[0.03] transition-colors cursor-default">
                 <div className="font-display text-5xl sm:text-6xl md:text-7xl text-black/5 dark:text-white/5 group-hover:text-[#cc0000]/10 transition-colors mb-3 sm:mb-4">{item.num}</div>

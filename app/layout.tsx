@@ -7,7 +7,7 @@ import BackToTop from '@/components/BackToTop'
 import { ThemeProvider } from '@/components/ThemeProvider'
 
 export const metadata: Metadata = {
-  title: 'JOUET MAROC — Scooters Électriques Premium',
+  title: 'TROPANDAA — Scooters Électriques Premium',
   description: 'Les scooters électriques les plus performants du Maroc. Vitesse. Puissance. Style.',
 }
 

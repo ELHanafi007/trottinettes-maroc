@@ -187,9 +187,9 @@ export default function ContactPage() {
               <h2 className="font-display text-2xl mb-10 text-white/70">INFOS DE CONTACT</h2>
               <div className="space-y-8">
                 {[
-                  { icon: '📍', label: 'Adresse', value: 'Fès, Maroc', href: null },
+                  { icon: '📍', label: 'Adresse', value: 'Casablanca, Maroc', href: null },
                   { icon: '📞', label: 'Téléphone', value: '+212 6XX XXX XXX', href: 'tel:+212600000000' },
-                  { icon: '✉️', label: 'Email', value: 'contact@jouetmaroc.ma', href: 'mailto:contact@jouetmaroc.ma' },
+                  { icon: '✉️', label: 'Email', value: 'contact@tropandaa.ma', href: 'mailto:contact@tropandaa.ma' },
                   { icon: '🕐', label: 'Horaires', value: 'Lun–Sam : 9h–18h', href: null },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-5 group">

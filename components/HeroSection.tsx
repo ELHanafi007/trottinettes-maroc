@@ -35,7 +35,7 @@ export default function HeroSection() {
               animate={{ width: 32 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             />
-            <span className="hidden xs:inline">Fès N°1 — </span>Scooter Électrique
+            <span className="hidden xs:inline">Casablanca N°1 — </span>Scooter Électrique
           </span>
         </motion.div>
 
@@ -46,8 +46,7 @@ export default function HeroSection() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            JOUET<br />
-            <span className="text-[#cc0000]">MAROC</span>
+            TROPANDAA
           </motion.h1>
         </div>
 
@@ -57,7 +56,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.7 }}
         >
-          Les machines les plus rapides de Fès. Zéro compromis sur la vitesse, la puissance et le style.
+          Les machines les plus rapides de Casablanca. Zéro compromis sur la vitesse, la puissance et le style.
         </motion.p>
 
         <motion.div

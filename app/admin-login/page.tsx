@@ -48,7 +48,7 @@ export default function LoginPage() {
           <div className="text-center mb-10">
             <div className="inline-block mb-6">
               <span className="font-display text-3xl text-white tracking-tight">
-                JOUET<span className="text-[#cc0000]">.</span>MAROC
+                TROPANDAA
               </span>
             </div>
             <div className="flex items-center justify-center gap-2 mb-2">

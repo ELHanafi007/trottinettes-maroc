@@ -69,7 +69,7 @@ export default function Navbar() {
               <div className="relative">
                 <div className="absolute inset-0 bg-[#cc0000] blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
                 <div className="relative font-display text-xl sm:text-3xl text-black dark:text-white tracking-tight">
-                  JOUET<span className="text-[#cc0000]">.</span>MAROC
+                  TROPANDAA
                 </div>
               </div>
             </Link>
@@ -194,7 +194,7 @@ export default function Navbar() {
                 {/* Mobile Header */}
                 <div className="flex items-center justify-between p-6 border-b border-black/10 dark:border-white/10">
                   <span className="font-display text-xl text-black dark:text-white">
-                    JOUET<span className="text-[#cc0000]">.</span>MAROC
+                    TROPANDAA
                   </span>
                   <button
                     onClick={() => setMenuOpen(false)}

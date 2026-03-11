@@ -26,7 +26,7 @@ export default async function AdminLayout({
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 w-full sm:w-auto">
               <Link href="/admin/dashboard" className="group flex items-center gap-2">
                 <div className="font-display text-xl sm:text-2xl text-white tracking-tight">
-                  JOUET<span className="text-[#cc0000]">.</span>MAROC <span className="text-white/40 group-hover:text-[#cc0000] transition-colors">ADMIN</span>
+                  TROPANDAA <span className="text-white/40 group-hover:text-[#cc0000] transition-colors">ADMIN</span>
                 </div>
               </Link>
               <div className="flex flex-wrap items-center gap-2 sm:gap-4 justify-center sm:justify-start">
